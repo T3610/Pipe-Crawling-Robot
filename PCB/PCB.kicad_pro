@@ -76,7 +76,16 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "courtyards_overlap|140970001|107454999|3e239925-d709-4872-a696-421a5c2ef725|bc130b27-d775-4513-8825-990c8fba6144",
+          ""
+        ],
+        [
+          "courtyards_overlap|143510001|107454999|31a15de5-d7cf-46e3-b11b-9b7a94f2b648|3e239925-d709-4872-a696-421a5c2ef725",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -178,7 +187,6 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
-          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -190,7 +198,6 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
-          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -202,7 +209,6 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
-          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -492,7 +498,7 @@
       "similar_labels": "warning",
       "similar_power": "warning",
       "simulation_model_issue": "ignore",
-      "single_global_label": "ignore",
+      "single_global_label": "warning",
       "stacked_pin_name": "warning",
       "unannotated": "error",
       "unconnected_wire_endpoint": "warning",
@@ -535,8 +541,8 @@
     "meta": {
       "version": 5
     },
-    "net_colors": {},
-    "netclass_assignments": {},
+    "net_colors": null,
+    "netclass_assignments": null,
     "netclass_patterns": []
   },
   "pcbnew": {
@@ -544,7 +550,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "gerber/",
+      "plot": "output/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
@@ -679,7 +685,7 @@
         "uuid": "dd32c4f5-8aba-4eab-baf9-8a2518db9488"
       }
     ],
-    "used_designators": "#PWR1-63,C1-2,D1-10,J1-18,R1-13,TP1-5,U1-8",
+    "used_designators": "D1-10,#PWR1-77,C1-7,J1-18,R1-15,U1-8,TP1-5",
     "variants": []
   },
   "sheets": [
