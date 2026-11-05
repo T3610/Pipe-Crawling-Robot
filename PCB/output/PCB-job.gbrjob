@@ -3,9 +3,9 @@
     "GenerationSoftware": {
       "Vendor": "KiCad",
       "Application": "Pcbnew",
-      "Version": "10.0.6"
+      "Version": "10.0.7"
     },
-    "CreationDate": "2026-11-01T16:05:41+00:00"
+    "CreationDate": "2026-11-03T12:03:01+00:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -42,57 +42,57 @@
   ],
   "FilesAttributes": [
     {
-      "Path": "PCB-F_Cu.gtl",
+      "Path": "PCB-F_Cu.gbr",
       "FileFunction": "Copper,L1,Top",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "PCB-In1_Cu.g1",
+      "Path": "PCB-In1_Cu.gbr",
       "FileFunction": "Copper,L2,Inr",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "PCB-In2_Cu.g2",
+      "Path": "PCB-In2_Cu.gbr",
       "FileFunction": "Copper,L3,Inr",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "PCB-B_Cu.gbl",
+      "Path": "PCB-B_Cu.gbr",
       "FileFunction": "Copper,L4,Bot",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "PCB-F_Paste.gtp",
+      "Path": "PCB-F_Paste.gbr",
       "FileFunction": "SolderPaste,Top",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "PCB-B_Paste.gbp",
+      "Path": "PCB-B_Paste.gbr",
       "FileFunction": "SolderPaste,Bot",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "PCB-F_Silkscreen.gto",
+      "Path": "PCB-F_Silkscreen.gbr",
       "FileFunction": "Legend,Top",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "PCB-B_Silkscreen.gbo",
+      "Path": "PCB-B_Silkscreen.gbr",
       "FileFunction": "Legend,Bot",
       "FilePolarity": "Positive"
     },
     {
-      "Path": "PCB-F_Mask.gts",
+      "Path": "PCB-F_Mask.gbr",
       "FileFunction": "SolderMask,Top",
       "FilePolarity": "Negative"
     },
     {
-      "Path": "PCB-B_Mask.gbs",
+      "Path": "PCB-B_Mask.gbr",
       "FileFunction": "SolderMask,Bot",
       "FilePolarity": "Negative"
     },
     {
-      "Path": "PCB-Edge_Cuts.gm1",
+      "Path": "PCB-Edge_Cuts.gbr",
       "FileFunction": "Profile",
       "FilePolarity": "Positive"
     }
