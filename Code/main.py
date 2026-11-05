@@ -30,8 +30,8 @@ current_speed = 50
 # ---------------------------------------------------------------------
 # 2. I2C & PCA9685 SETUP (6 Servos)
 # ---------------------------------------------------------------------
-# Using standard ESP32 I2C pins: SCL=Pin(22), SDA=Pin(21) - note: if Pin 21 is used for RS485 DE, change I2C pins accordingly (e.g., SDA=23, SCL=22)
-i2c = I2C(0, scl=Pin(22), sda=Pin(23), freq=50000)
+# Using standard ESP32 I2C pins: SCL=Pin(2), SDA=Pin(3) - note: if Pin 3 is used for RS485 DE, change I2C pins accordingly (e.g., SDA=2, SCL=3)
+i2c = I2C(0, scl=Pin(2), sda=Pin(3), freq=50000)
 PCA9685_ADDR = 0x40
 
 def init_pca9685():
@@ -154,14 +154,16 @@ dns.start()
 
 def send_html_file(conn, filename="index.html"):
     try:
-        conn.send("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n")
-        with open(filename, "r") as f:
+        # Add 'b' prefix for bytes
+        conn.send(b"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n")
+        with open(filename, "rb") as f:
             while True:
                 chunk = f.read(512)
                 if not chunk: break
-                conn.send(chunk)
+                conn.send(chunk) # Note: fixing this specific line is part of issue #3
     except:
-        conn.send("HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\nFile Not Found")
+        # Add 'b' prefix for bytes
+        conn.send(b"HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\nFile Not Found")
 
 def parse_params(path):
     params = {}
@@ -212,9 +214,19 @@ def webserver_loop():
                 params = parse_params(path)
                 ch = int(params.get('ch', '0'))
                 angle = int(params.get('angle', '90'))
+                print(f"Setting servo {ch} to angle {angle}")
                 set_servo_angle(ch, angle)
                 response = json.dumps({"status": "ok", "channel": ch, "angle": angle})
-
+                
+            elif path.startswith('/servos_group?'):
+                params = parse_params(path)
+                angle = int(params.get('angle', '90'))
+                print(f"Setting Servos 1, 2, and 3 to angle {angle}")
+                set_servo_angle(0, angle)
+                set_servo_angle(1, angle)
+                set_servo_angle(2, angle)
+                response = json.dumps({"status": "ok", "channels": [0, 1, 2], "angle": angle})
+                
             elif path == '/stop':
                 stop_all_motors()
                 response = state_json()
@@ -227,7 +239,8 @@ def webserver_loop():
                 conn.close()
                 continue
 
-            conn.send('HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n' + response)
+            # Encode the entire string to bytes
+            conn.send(('HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n' + response).encode('utf-8'))
             conn.close()
         except:
             try: conn.close()
